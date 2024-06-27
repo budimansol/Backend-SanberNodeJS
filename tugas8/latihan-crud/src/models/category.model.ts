@@ -3,11 +3,9 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const CategorySchema = new Schema({
-    make: String,
-    model: String,
-    owner:{
-        type: Schema.Types.ObjectId,
-        ref: "Products"
+    name:{
+        type: String,
+        require: true,
     }
 });
 

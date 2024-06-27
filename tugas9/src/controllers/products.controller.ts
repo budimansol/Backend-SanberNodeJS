@@ -1,5 +1,9 @@
+import Yup from "yup";
 import { Request, Response } from "express";
 import ProductsModel from "@/models/products.model";
+
+
+
 
 export default {
   async create(req: Request, res: Response) {
@@ -17,9 +21,9 @@ export default {
       });
     }
   },
-  async findAll(req: Request, res: Response) {
+async findAll(req: Request, res: Response) {
     try {
-      const result = await ProductsModel.find();
+      const result = await ProductsModel.find().populate("category")
       res.status(200).json({
         data: result,
         message: "Success get all products",
@@ -89,17 +93,4 @@ export default {
       });
     }
   },
-
-async getAllCategory(req: Request, res: Response){
-    try {
-      const foundProducts = await ProductsModel.find({name:req.params.name}).populate("categoryId");
-      res.json(foundProducts);
-    } catch (error) {
-      const err = error as Error;
-      res.status(500).json({
-        data: err.message,
-        message: "Failed to found"
-      });
-    }
-  }
 };
