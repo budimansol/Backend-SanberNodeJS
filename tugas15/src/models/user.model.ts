@@ -26,9 +26,9 @@ const UserSchema = new Schema(
     },
     roles: [
       {
-        type: String,
-        default: "user",
-      },
+      type: String,
+      default: "user",
+      }
     ],
     profilePicture: {
       type: String,
