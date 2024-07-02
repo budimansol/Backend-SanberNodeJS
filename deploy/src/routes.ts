@@ -10,6 +10,12 @@ import aclMiddlware from "./middlewares/acl.middleware";
 
 const router = express.Router();
 
+router.get("/", (req, res) =>{
+  res.status(200).json({
+    message: "Hello World"
+  });
+});
+
 router.get("/products", productsController.findAll);
 router.post("/products", productsController.create);
 router.get("/products/:id", productsController.findOne);
